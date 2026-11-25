@@ -8,10 +8,17 @@ if not defined GAME set "GAME=C:\Program Files (x86)\Steam\steamapps\common\Mons
 where dotnet >nul 2>&1
 if errorlevel 1 (
   echo .NET SDK is required.
-  exit /b 1
+  goto :failed
 )
 dotnet build "src\Monsterpatch_BottleSwapper_Patcher.csproj" -c Release -p:SharedLibDir="%LIB%" -p:GameDir="%GAME%"
-if errorlevel 1 exit /b 1
-if not exist "Release\BepInEx\patchers\Monsterpatch_BottleSwapper_Patcher.dll" exit /b 1
+if errorlevel 1 goto :failed
+if not exist "Release\BepInEx\patchers\Monsterpatch_BottleSwapper_Patcher.dll" goto :failed
 echo SUCCESS: Drag Release\BepInEx into Monsterpatch.
+pause
 exit /b 0
+
+:failed
+echo.
+echo BUILD FAILED. See the error messages above.
+pause
+exit /b 1
