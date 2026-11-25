@@ -36,7 +36,7 @@ namespace Goose.Monsterpatch.BottleSwapper
         static object Call(object o, string n, params object[] a)
         {
             var m = Of(o).GetMethods(Flags).FirstOrDefault(x => x.Name == n && !x.ContainsGenericParameters &&
-                x.GetParameters().Length == a.Length && x.GetParameters().Select((p,i) => a[i] == null ? !p.ParameterType.IsValueType : p.ParameterType.IsInstanceOfType(a[i])).All(x => x));
+                x.GetParameters().Length == a.Length && x.GetParameters().Select((p,i) => a[i] == null ? !p.ParameterType.IsValueType : p.ParameterType.IsInstanceOfType(a[i])).All(matches => matches));
             if (m == null) throw new MissingMethodException(Of(o).FullName,n);
             return m.Invoke(Target(o),a);
         }
