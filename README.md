@@ -1,7 +1,6 @@
 # Monsterpatch Bottle Swapper v0.1.0 (beta test)
 
 BepInEx 5 Mono.Cecil preloader patcher, separate from Bottle House Modifiers.
-Targets the November 24 beta dump. No custom overlay and no bundled game code or assets.
 
 ## Build
 Run build.bat. Requires .NET SDK and Mono.Cecil.dll (sibling lib or default Steam installation).
