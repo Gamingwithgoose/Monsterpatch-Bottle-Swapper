@@ -199,7 +199,7 @@ namespace Goose.Monsterpatch.BottleSwapper
                 Select(g,swapButton);
                 SF(g,"lastButtonObj",swapButton);
                 // Native typewriter + native localized Yes/No buttons.
-                Call(dialogue,"ShowDialogue",new List<string>{"Would you like to swap this mon's bottle?","#yn"},true);
+                Call(dialogue,"ShowDialogue",new List<string>{"Would you like to swap this MoN's bottle?","#yn"},true);
                 Log("Confirmation opened for party slot "+selectedSlot);
             }
             catch(Exception e) { Log("Confirmation failed: "+e); Recover(g); }
